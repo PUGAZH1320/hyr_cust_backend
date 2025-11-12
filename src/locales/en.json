@@ -1,0 +1,12 @@
+{
+  "user_created": "User created successfully",
+  "user_updated": "User updated successfully",
+  "user_deleted": "User deleted successfully",
+  "user_not_found": "User not found",
+  "invalid_credentials": "Invalid credentials",
+  "unauthorized": "Unauthorized access",
+  "forbidden": "Forbidden access",
+  "validation_error": "Validation error",
+  "internal_server_error": "Internal server error"
+}
+
