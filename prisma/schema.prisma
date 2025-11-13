@@ -1,0 +1,62 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Temp_phone {
+  user_id BigInt  @id @db.BigInt
+  ph_no   String  @db.VarChar(20)
+  otp     String  @db.VarChar(6)
+
+  @@map("temp_phone")
+}
+
+model User_session {
+  id        BigInt   @id @default(autoincrement()) @db.BigInt
+  user_id  BigInt   @db.BigInt
+  fcm_token String  @db.VarChar(255)
+  token     String  @db.VarChar(755)
+  created_at DateTime @default(now()) @db.Timestamp
+  updated_at DateTime @updatedAt @db.Timestamp
+  deleted_at DateTime? @db.Timestamp
+
+  @@map("user_session")
+}
+
+model Otp_data {
+  id        BigInt   @id @default(autoincrement()) @db.BigInt
+  user_id  BigInt   @db.BigInt
+  otp_value String  @db.VarChar(6)
+  created_at DateTime @default(now()) @db.Timestamp
+  updated_at DateTime @updatedAt @db.Timestamp
+  deleted_at DateTime? @db.Timestamp
+
+  @@map("otp_data")
+}
+
+model User {
+  id            BigInt   @id @default(autoincrement()) @db.BigInt
+  countryCode   String   @db.VarChar(5)
+  phoneNumber   String   @db.VarChar(20)
+  fullName      String   @db.VarChar(125)
+  Gender        Int      @db.SmallInt
+  isBusinessUser Int     @db.SmallInt
+  isActive      Int      @db.SmallInt
+  emailID       String   @db.VarChar(125)
+  rideOTP       String   @db.VarChar(4)
+  isVerified    Int      @db.SmallInt
+  referalCode   String?  @db.VarChar(20)
+  referedBy     BigInt?  @db.BigInt
+  created_at    DateTime @default(now()) @db.Timestamp
+  updated_at    DateTime @updatedAt @db.Timestamp
+  deleted_at   DateTime? @db.Timestamp
+
+  @@map("user")
+}
+
+

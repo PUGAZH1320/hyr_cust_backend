@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.731.1",
+    "@prisma/client": "^6.19.0",
     "@types/bcrypt": "^5.0.2",
     "@types/i18n": "^0.13.12",
     "@types/jsonwebtoken": "^9.0.9",
@@ -38,6 +39,7 @@
     "multer-s3": "^3.0.1",
     "pg": "^8.13.0",
     "pg-hstore": "^2.3.4",
+    "prisma": "^6.19.0",
     "sequelize": "^6.37.6",
     "sequelize-cli": "^6.6.1",
     "swagger-jsdoc": "^6.2.8",

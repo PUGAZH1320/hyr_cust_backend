@@ -3,9 +3,17 @@ import { sequelize } from "../db/config.js";
 
 export class User extends Model {
   public id!: number;
-  public accountName!: string;
-  public email!: string;
-  public password?: string;
+  public countryCode!: string;
+  public phoneNumber!: string;
+  public fullName!: string;
+  public Gender!: number;
+  public isBusinessUser!: number;
+  public isActive!: number;
+  public emailID!: string;
+  public rideOTP!: string;
+  public isVerified!: number;
+  public referalCode?: string;
+  public referedBy?: number;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt?: Date;
@@ -17,19 +25,50 @@ User.init(
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true,
-    },
-    accountName: {
-      type: DataTypes.STRING(255),
       allowNull: false,
-      unique: true,
     },
-    email: {
-      type: DataTypes.STRING(150),
+    countryCode: {
+      type: DataTypes.STRING(5),
       allowNull: false,
-      unique: true,
     },
-    password: {
-      type: DataTypes.STRING(255),
+    phoneNumber: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+    },
+    fullName: {
+      type: DataTypes.STRING(125),
+      allowNull: false,
+    },
+    Gender: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    isBusinessUser: {
+      type: DataTypes.TINYINT,
+      allowNull: false,
+    },
+    isActive: {
+      type: DataTypes.TINYINT,
+      allowNull: false,
+    },
+    emailID: {
+      type: DataTypes.STRING(125),
+      allowNull: false,
+    },
+    rideOTP: {
+      type: DataTypes.STRING(4),
+      allowNull: false,
+    },
+    isVerified: {
+      type: DataTypes.TINYINT,
+      allowNull: false,
+    },
+    referalCode: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+    },
+    referedBy: {
+      type: DataTypes.BIGINT,
       allowNull: true,
     },
     deletedAt: {
@@ -39,9 +78,12 @@ User.init(
   },
   {
     sequelize,
-    tableName: "users",
+    tableName: "user",
     paranoid: true, // Enables soft deletes
     timestamps: true,
+    createdAt: "created_at",
+    updatedAt: "updated_at",
+    deletedAt: "deleted_at",
   }
 );
 
