@@ -13,27 +13,27 @@ const dbPassword = process.env.DB_PASSWORD;
 
 const config: IConfig = {
   development: {
-    postgres: {
+    mysql: {
       options: {
         host: dbHost,
         port: parseInt(dbPort as string),
         database: dbName,
         username: dbUser,
         password: dbPassword,
-        dialect: "postgres",
+        dialect: "mysql",
         logging: false,
       },
     },
   },
   production: {
-    postgres: {
+    mysql: {
       options: {
         host: dbHost,
         port: parseInt(dbPort as string),
         database: dbName,
         username: dbUser,
         password: dbPassword,
-        dialect: "postgres",
+        dialect: "mysql",
         dialectOptions: {
           ssl: {
             require: true,
@@ -45,14 +45,14 @@ const config: IConfig = {
     },
   },
   test: {
-    postgres: {
+    mysql: {
       options: {
         host: dbHost,
         port: parseInt(dbPort as string),
         database: dbName,
         username: dbUser,
         password: dbPassword,
-        dialect: "postgres",
+        dialect: "mysql",
         logging: false,
       },
     },
@@ -60,7 +60,7 @@ const config: IConfig = {
 };
 
 const env = (process.env.NODE_ENV as IEnvironment) || "development";
-const dbConfig = config[env].postgres.options;
+const dbConfig = config[env].mysql.options;
 
 export const sequelize = new Sequelize(
   dbConfig.database!,

@@ -18,7 +18,7 @@ export interface IDatabaseOptions {
 }
 
 export interface IDatabaseConfig {
-  postgres: {
+  mysql: {
     options: IDatabaseOptions;
   };
 }
