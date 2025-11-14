@@ -12,10 +12,10 @@ export class TempPhoneService {
   }
 
   async findByUserId(user_id: number): Promise<TempPhone> {
+    // Note: deletedAt check is handled automatically by paranoid: true
     const tempPhone = await TempPhone.findOne({
       where: {
         user_id,
-        deletedAt: null,
       },
     });
 
@@ -27,20 +27,17 @@ export class TempPhoneService {
   }
 
   async findByPhoneNumber(ph_no: string): Promise<TempPhone | null> {
+    // Note: deletedAt check is handled automatically by paranoid: true
     return await TempPhone.findOne({
       where: {
         ph_no,
-        deletedAt: null,
       },
     });
   }
 
   async findAll(): Promise<TempPhone[]> {
-    return await TempPhone.findAll({
-      where: {
-        deletedAt: null,
-      },
-    });
+    // Note: deletedAt check is handled automatically by paranoid: true
+    return await TempPhone.findAll();
   }
 
   async update(user_id: number, data: Partial<TempPhone>): Promise<TempPhone> {
@@ -73,5 +70,18 @@ export class TempPhoneService {
   async verifyOtp(user_id: number, otp: string): Promise<boolean> {
     const tempPhone = await this.findByUserId(user_id);
     return tempPhone.otp === otp;
+  }
+
+  async findByUserIdAndPhone(
+    user_id: number,
+    ph_no: string
+  ): Promise<TempPhone | null> {
+    // Note: deletedAt check is handled automatically by paranoid: true
+    return await TempPhone.findOne({
+      where: {
+        user_id,
+        ph_no,
+      },
+    });
   }
 }

@@ -12,10 +12,10 @@ export class OtpDataService {
   }
 
   async findById(id: number): Promise<OtpData> {
+    // Note: deletedAt check is handled automatically by paranoid: true
     const otpData = await OtpData.findOne({
       where: {
         id,
-        deletedAt: null,
       },
     });
 
@@ -27,10 +27,10 @@ export class OtpDataService {
   }
 
   async findByUserId(user_id: number): Promise<OtpData> {
+    // Note: deletedAt check is handled automatically by paranoid: true
     const otpData = await OtpData.findOne({
       where: {
         user_id,
-        deletedAt: null,
       },
     });
 
@@ -42,11 +42,8 @@ export class OtpDataService {
   }
 
   async findAll(): Promise<OtpData[]> {
-    return await OtpData.findAll({
-      where: {
-        deletedAt: null,
-      },
-    });
+    // Note: deletedAt check is handled automatically by paranoid: true
+    return await OtpData.findAll();
   }
 
   async update(id: number, data: Partial<OtpData>): Promise<OtpData> {

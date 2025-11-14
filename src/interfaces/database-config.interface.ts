@@ -9,11 +9,18 @@ export interface IDatabaseOptions {
   password?: string;
   dialect: Dialect;
   logging?: boolean | ((sql: string) => void);
+  pool?: {
+    max?: number;
+    min?: number;
+    acquire?: number;
+    idle?: number;
+  };
   dialectOptions?: {
     ssl?: {
       require: boolean;
       rejectUnauthorized: boolean;
     };
+    connectTimeout?: number;
   };
 }
 

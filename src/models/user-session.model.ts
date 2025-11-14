@@ -31,10 +31,7 @@ UserSession.init(
       type: DataTypes.STRING(755),
       allowNull: false,
     },
-    deletedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
+    // deletedAt is handled automatically by Sequelize when paranoid: true
   },
   {
     sequelize,

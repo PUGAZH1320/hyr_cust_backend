@@ -25,15 +25,15 @@ TempPhone.init(
       type: DataTypes.STRING(6),
       allowNull: false,
     },
-    deletedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
+    // deletedAt is handled automatically by Sequelize when paranoid: true
   },
   {
     sequelize,
     tableName: "temp_phone",
     paranoid: true, // Enables soft deletes
     timestamps: true,
+    createdAt: "created_at",
+    updatedAt: "updated_at",
+    deletedAt: "deleted_at",
   }
 );

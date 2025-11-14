@@ -9,9 +9,12 @@ datasource db {
 }
 
 model Temp_phone {
-  user_id BigInt  @id @db.BigInt
-  ph_no   String  @db.VarChar(20)
-  otp     String  @db.VarChar(6)
+  user_id   BigInt    @id @db.BigInt
+  ph_no     String    @db.VarChar(20)
+  otp       String    @db.VarChar(6)
+  created_at DateTime @default(now()) @db.DateTime(0)
+  updated_at DateTime @updatedAt @db.DateTime(0)
+  deleted_at DateTime? @db.DateTime(0)
 
   @@map("temp_phone")
 }
@@ -21,9 +24,9 @@ model User_session {
   user_id  BigInt   @db.BigInt
   fcm_token String  @db.VarChar(255)
   token     String  @db.VarChar(755)
-  created_at DateTime @default(now()) @db.Timestamp
-  updated_at DateTime @updatedAt @db.Timestamp
-  deleted_at DateTime? @db.Timestamp
+  created_at DateTime @default(now()) @db.DateTime(0)
+  updated_at DateTime @updatedAt @db.DateTime(0)
+  deleted_at DateTime? @db.DateTime(0)
 
   @@map("user_session")
 }
@@ -32,9 +35,9 @@ model Otp_data {
   id        BigInt   @id @default(autoincrement()) @db.BigInt
   user_id  BigInt   @db.BigInt
   otp_value String  @db.VarChar(6)
-  created_at DateTime @default(now()) @db.Timestamp
-  updated_at DateTime @updatedAt @db.Timestamp
-  deleted_at DateTime? @db.Timestamp
+  created_at DateTime @default(now()) @db.DateTime(0)
+  updated_at DateTime @updatedAt @db.DateTime(0)
+  deleted_at DateTime? @db.DateTime(0)
 
   @@map("otp_data")
 }
@@ -52,9 +55,9 @@ model User {
   isVerified    Int      @db.TinyInt
   referalCode   String?  @db.VarChar(20)
   referedBy     BigInt?  @db.BigInt
-  created_at    DateTime @default(now()) @db.Timestamp
-  updated_at    DateTime @updatedAt @db.Timestamp
-  deleted_at   DateTime? @db.Timestamp
+  created_at    DateTime @default(now()) @db.DateTime(0)
+  updated_at    DateTime @updatedAt @db.DateTime(0)
+  deleted_at   DateTime? @db.DateTime(0)
 
   @@map("user")
 }

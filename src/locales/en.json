@@ -7,6 +7,16 @@
   "unauthorized": "Unauthorized access",
   "forbidden": "Forbidden access",
   "validation_error": "Validation error",
-  "internal_server_error": "Internal server error"
+  "internal_server_error": "Internal server error",
+  "otp_sent": "OTP sent successfully",
+  "user_created_otp_sent": "User created and OTP sent successfully",
+  "otp_verified": "OTP verified successfully",
+  "invalid_otp": "Invalid OTP",
+  "otp_not_found": "OTP not found. Please request a new OTP.",
+  "fcm_token_updated": "FCM token updated successfully",
+  "logout_successful": "Logged out successfully",
+  "profile_fetched": "Profile fetched successfully",
+  "otp_sent_for_phone_change": "OTP sent for phone number change",
+  "phone_verified_and_updated": "Phone number verified and updated successfully"
 }
 

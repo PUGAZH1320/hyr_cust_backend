@@ -71,10 +71,7 @@ User.init(
       type: DataTypes.BIGINT,
       allowNull: true,
     },
-    deletedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
+    // deletedAt is handled automatically by Sequelize when paranoid: true
   },
   {
     sequelize,

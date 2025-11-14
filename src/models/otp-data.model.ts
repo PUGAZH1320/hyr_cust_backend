@@ -26,10 +26,7 @@ OtpData.init(
       type: DataTypes.STRING(6),
       allowNull: false,
     },
-    deletedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
+    // deletedAt is handled automatically by Sequelize when paranoid: true
   },
   {
     sequelize,

@@ -12,10 +12,10 @@ export class UserService {
   }
 
   async findById(id: number): Promise<User> {
+    // Note: deletedAt check is handled automatically by paranoid: true
     const user = await User.findOne({
       where: {
         id,
-        deletedAt: null,
       },
     });
 
@@ -27,11 +27,8 @@ export class UserService {
   }
 
   async findAll(): Promise<User[]> {
-    return await User.findAll({
-      where: {
-        deletedAt: null,
-      },
-    });
+    // Note: deletedAt check is handled automatically by paranoid: true
+    return await User.findAll();
   }
 
   async update(id: number, data: Partial<User>): Promise<User> {
